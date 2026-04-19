@@ -83,8 +83,8 @@ if st.button("Predict"):
     confidence_pct = result["confidence"] * 100
     Pu = result["ultimate_load"]
     Pu_sci = f"{Pu:.2e}"
-mantissa, exp = Pu_sci.split("e")
-exp = int(exp)
+    mantissa, exp = Pu_sci.split("e")
+    exp = int(exp)
 
 st.markdown(f"**Ultimate load:** P₍u₎ = {mantissa} × 10^{exp} N")
     st.success("Prediction completed")
