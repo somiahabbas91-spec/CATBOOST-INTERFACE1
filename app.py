@@ -39,32 +39,7 @@ Fy = st.number_input("Fy", value=350.0)
 # =========================
 # PREDICT BUTTON
 # =========================
-if st.button("Predict"):
 
-    input_data = {
-        "geometry": {
-            "L": L,
-            "H1": H1,
-            "Bf1": Bf1,
-            "Bl1": Bl1,
-            "t1": t1,
-            "R1": R1,
-            "e": e,
-            "a": a,
-            "k": k,
-            "p": p,
-            "d": d,
-        },
-        "limite condition": {
-            "LC": LC,
-        },
-        "material": {
-            "Fy": Fy,
-        }
-    }
-
-    result = interface.predict_with_confidence(input_data)
-    
 if st.button("Predict"):
 
     input_data = {
