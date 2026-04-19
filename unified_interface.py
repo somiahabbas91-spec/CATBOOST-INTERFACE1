@@ -31,8 +31,8 @@ class CatBoostUnifiedInterface:
 
         X = pd.DataFrame([flat])[self.feature_names]
 
-        class_index = int(self.clf_model.predict(X)[0])
-        probs = self.clf_model.predict_proba(X)[0]
+        class_index = self.clf_model.predict(X).squeeze().astype(int).item()
+        probs = self.clf_model.predict_proba(X).squeeze()
 
         failure_mode = self.label_names[class_index]
         confidence = float(max(probs))
