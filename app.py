@@ -96,5 +96,5 @@ if st.button("Predict"):
 
 **Prediction confidence:** {confidence_pct:.1f}%  
 
-**Ultimate load:** P₍u₎ = {mantissa} × 10^{exp} N
+**Ultimate load:** Pu = {mantissa} × 10^{exp} N
 """)
