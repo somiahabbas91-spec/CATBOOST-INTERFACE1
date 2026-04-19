@@ -64,9 +64,62 @@ if st.button("Predict"):
     }
 
     result = interface.predict_with_confidence(input_data)
+    
+if st.button("Predict"):
+
+    input_data = {
+        "geometry": {
+            "L": L,
+            "H1": H1,
+            "Bf1": Bf1,
+            "Bl1": Bl1,
+            "t1": t1,
+            "R1": R1,
+            "e": e,
+            "a": a,
+            "k": k,
+            "p": p,
+            "d": d,
+        },
+        "limite condition": {
+            "LC": LC,
+        },
+        "material": {
+            "Fy": Fy,
+        }
+    }
+
+    result = interface.predict_with_confidence(input_data)
+
+    # ✅ 👇 PUT YOUR CODE HERE (AFTER result)
+
+    failure_modes = {
+        "L": "Local buckling",
+        "D": "Distortional buckling",
+        "G": "Global buckling",
+        "L+D": "Local + Distortional buckling",
+        "L+G": "Local + Global buckling",
+        "FT": "Flexural-torsional buckling",
+        "L+FT": "Local + Flexural-torsional buckling"
+    }
+
+    mode_full = failure_modes.get(result["failure_mode"], result["failure_mode"])
+
+    confidence_pct = result["confidence"] * 100
+    Pu = result["ultimate_load"]
+    Pu_formatted = f"{Pu:.2e}"
 
     st.success("Prediction completed")
 
-    st.write("Failure mode:", result["failure_mode"])
-    st.write("Confidence:", result["confidence"])
-    st.write("Ultimate load:", result["ultimate_load"])
+    st.markdown("### 📊 Prediction Results")
+
+    st.markdown(f"""
+**Predicted failure mode:** {mode_full}  
+
+**Prediction confidence:** {confidence_pct:.1f}%  
+
+**Ultimate load:**  
+\\[
+P_u = {Pu_formatted} \\; \\text{{N}}
+\\]
+""")
