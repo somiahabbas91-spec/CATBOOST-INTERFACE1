@@ -6,8 +6,8 @@ from unified_interface import CatBoostUnifiedInterface
 # LOAD INTERFACE
 # =========================
 interface = CatBoostUnifiedInterface(
-    clf_model_path=r"D:\data AI\SAMSOUMA\best_catboost_classification.pkl",
-    reg_model_path=r"D:\data AI\SAMSOUMA\best_catboost_regression.pkl",
+    clf_model_path = "best_catboost_classification.pkl"
+    reg_model_path = "best_catboost_regression.pkl"
     feature_names=[
         "L","H1","Bf1",
         "Bl1","t1","R1",
