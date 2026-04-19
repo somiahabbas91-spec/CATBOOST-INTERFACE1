@@ -39,7 +39,6 @@ Fy = st.number_input("Fy", value=350.0)
 # =========================
 # PREDICT BUTTON
 # =========================
-
 if st.button("Predict"):
 
     input_data = {
@@ -66,8 +65,7 @@ if st.button("Predict"):
 
     result = interface.predict_with_confidence(input_data)
 
-    # ✅ 👇 PUT YOUR CODE HERE (AFTER result)
-
+    # --- Mapping failure modes ---
     failure_modes = {
         "L": "Local buckling",
         "D": "Distortional buckling",
@@ -80,13 +78,15 @@ if st.button("Predict"):
 
     mode_full = failure_modes.get(result["failure_mode"], result["failure_mode"])
 
+    # --- Formatting ---
     confidence_pct = result["confidence"] * 100
     Pu = result["ultimate_load"]
+
     Pu_sci = f"{Pu:.2e}"
     mantissa, exp = Pu_sci.split("e")
     exp = int(exp)
 
-st.markdown(f"**Ultimate load:** P₍u₎ = {mantissa} × 10^{exp} N")
+    # --- Output ---
     st.success("Prediction completed")
 
     st.markdown("### 📊 Prediction Results")
@@ -96,8 +96,5 @@ st.markdown(f"**Ultimate load:** P₍u₎ = {mantissa} × 10^{exp} N")
 
 **Prediction confidence:** {confidence_pct:.1f}%  
 
-**Ultimate load:**  
-\\[
-P_u = {Pu_formatted} \\; \\text{{N}}
-\\]
+**Ultimate load:** P₍u₎ = {mantissa} × 10^{exp} N
 """)
