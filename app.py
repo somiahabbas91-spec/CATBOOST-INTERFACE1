@@ -82,8 +82,7 @@ if st.button("Predict"):
 
     confidence_pct = result["confidence"] * 100
     Pu = result["ultimate_load"]
-    Pu_formatted = f"{Pu:.2e}"
-
+    Pu_formatted = f"{Pu:.2e}".replace("e+0", " \\times 10^{").replace("e+", " \\times 10^{") + "}"
     st.success("Prediction completed")
 
     st.markdown("### 📊 Prediction Results")
