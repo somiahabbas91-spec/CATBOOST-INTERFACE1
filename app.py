@@ -18,7 +18,7 @@ interface = CatBoostUnifiedInterface(
 # =========================
 # UI
 # =========================
-st.title("Structural Failure Prediction System")
+st.title("AI-Based Structural Performance Prediction Tool")
 
 st.header("Input Parameters")
 
